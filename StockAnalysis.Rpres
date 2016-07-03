@@ -1,0 +1,51 @@
+StockAnalysis
+========================================================
+author: Srinivasa Mathkur
+date: 07/03/2015
+autosize: true
+
+Introduction
+========================================================
+
+This is a simple application built as a part of course project for [Developing Data Products](https://www.coursera.org/learn/data-products/home/welcome).
+
+As a part of the project, we are required to: 
+
+1. Build an application using [Shiny](http://shiny.rstudio.com/) and publish it to [shinyapps.io](https://www.shinyapps.io).
+
+2. Pitch the application using [slidify](http://slidify.org/) or [R presentation](https://support.rstudio.com/hc/en-us/sections/200130218-R-Presentations).
+
+The [Stock Analysis](https://srinimath.shinyapps.io/StockAnalysis/) that I have built will allow you to track your stocks through trend charts and also lets you forecast the stock prices.
+
+How Application Works
+========================================================
+This application will let you do the following:
+1. Chart stock prices over a selected time period. It also plots trends and performance of these individual stock prices.
+
+2. If you wish to, you can then forecast for any period of time using either [ARIMA](https://en.wikipedia.org/wiki/Exponential_smoothing) or [Exponential Time Series](https://en.wikipedia.org/wiki/Autoregressive_integrated_moving_average) models. This plot is interactive as well which shows you data when you hover over.
+
+3. Lastly, if you choose to see the forecasted data, this application will show you data in tabular format. 
+
+Main Packages Used
+========================================================
+I have used a few packages but I would like to showcase two packages that are the main forces behind this application:
+
+1. [Quantmod](http://www.quantmod.com/): This package allows you to pull stock data from many sources and even lets to plot a chart series, as shown below:
+
+2. [forecast](https://cran.r-project.org/web/packages/forecast/index.html): This package lets you forecast on any timeseries in an easy manner. 
+
+```{r, echo=FALSE}
+library(quantmod)
+google <- getSymbols("GOOG", src = "yahoo",
+                 from = Sys.Date()-30,
+                 to = Sys.Date(),
+                 auto.assign = FALSE)
+chartSeries(google,theme = chartTheme("white"))
+```
+
+References
+========================================================
+
+1. Stock Analysis Application: https://srinimath.shinyapps.io/StockAnalysis/ 
+
+2. 
